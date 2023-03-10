@@ -1,6 +1,7 @@
 import { FC } from 'react';
-import { MainLayoutProps } from './types';
+import { Props } from './types';
+import { Wrapper } from './styles';
 
-const MainLayout: FC<MainLayoutProps> = ({ children }) => children;
+const MainLayout: FC<Props> = ({ children }) => <Wrapper>{children}</Wrapper>;
 
 export default MainLayout;

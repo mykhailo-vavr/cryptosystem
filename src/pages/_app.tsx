@@ -1,5 +1,6 @@
 import { GlobalStyle } from '@/styles/global.styles';
 import { lightTheme } from '@/styles/themes/light';
+import { App as AppProvider } from 'antd';
 import { NextPage } from 'next';
 import type { AppProps } from 'next/app';
 import { ReactElement, ReactNode } from 'react';
@@ -19,7 +20,7 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
   return (
     <ThemeProvider theme={lightTheme}>
       <GlobalStyle />
-      {getLayout(<Component {...pageProps} />)}
+      <AppProvider>{getLayout(<Component {...pageProps} />)}</AppProvider>
     </ThemeProvider>
   );
 };

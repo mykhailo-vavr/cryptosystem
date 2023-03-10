@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import { Inter } from '@next/font/google';
+import { antdStyles } from './ant.styles';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -22,4 +23,10 @@ export const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     color: inherit;
   }
+
+  li {
+    list-style-type: none;
+  }
+
+  ${antdStyles}
 `;

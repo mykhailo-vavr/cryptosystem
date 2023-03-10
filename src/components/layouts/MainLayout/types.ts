@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
 
-export type MainLayoutProps = {
+export type Props = {
   children: ReactElement;
 };
