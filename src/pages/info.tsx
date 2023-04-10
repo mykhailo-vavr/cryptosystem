@@ -1,9 +1,8 @@
-import MainLayout from '@/components/layouts/MainLayout';
-import { NextPageWithLayout } from '@/pages/_app';
-import Info from '@/components/containers/Info';
+import { MainLayout } from '@/components/layouts';
+import { NextPageWithLayout, Info } from '@/components/containers';
 
-const Page: NextPageWithLayout = () => <Info />;
+const InfoPage: NextPageWithLayout = () => <Info />;
 
-Page.getLayout = (page) => <MainLayout>{page}</MainLayout>;
+InfoPage.getLayout = (page) => <MainLayout>{page}</MainLayout>;
 
-export default Page;
+export default InfoPage;

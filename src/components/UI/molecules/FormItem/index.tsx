@@ -1,7 +1,14 @@
-import { FormItemProps } from 'antd';
+import { yupSync } from '@/utils';
 import { FC } from 'react';
-import { Wrapper } from './styles';
+import { FormItemWrapper } from './styles';
+import { FormItemProps } from './types';
 
-const FormItem: FC<FormItemProps> = (props) => <Wrapper {...props} />;
+const FormItem: FC<FormItemProps> = ({ schema, name, required, ...props }) => (
+  <FormItemWrapper
+    rules={schema && name ? yupSync(String(name), schema, required) : undefined}
+    name={name}
+    {...props}
+  />
+);
 
 export default FormItem;

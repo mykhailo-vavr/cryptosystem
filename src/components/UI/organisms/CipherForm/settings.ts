@@ -1,11 +1,9 @@
-import { ActionsEnum, LocalesEnum, SaveAsEnum } from '@/utils';
-import { CipherForm } from './types';
+import { CipherForm, ActionsEnum, SaveAsEnum } from '@/types';
 
 export const initialValues: CipherForm = {
   text: '',
   cipher: '',
-  key: 0,
-  locale: LocalesEnum.EN,
+  alphabet: 'abcdefghijklmnopqrstuvwxyz',
   action: ActionsEnum.ENCODE,
   saveAs: SaveAsEnum.TEXT,
 };
@@ -18,9 +16,4 @@ export const actionOptions = [
 export const saveAsOptions = [
   { value: SaveAsEnum.TEXT, label: 'Plain text' },
   { value: SaveAsEnum.FILE, label: 'File' },
-];
-
-export const selectOptions = [
-  { value: LocalesEnum.EN, label: 'EN' },
-  { value: LocalesEnum.UA, label: 'UA' },
 ];

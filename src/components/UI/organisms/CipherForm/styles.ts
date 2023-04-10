@@ -1,13 +1,13 @@
-import { size } from '@/utils/style';
+import { size } from '@/utils';
 import styled from 'styled-components';
 
-export const Title = styled.h2`
-  margin-bottom: ${size(10)};
-`;
-
-export const Wrapper = styled.div`
+export const CipherFormWrapper = styled.div`
   display: flex;
   flex-direction: column;
+
+  .title {
+    margin-bottom: ${size(10)};
+  }
 
   .row {
     display: flex;

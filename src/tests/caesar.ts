@@ -1,5 +1,5 @@
 import caesar from '@/ciphers/caesar';
-import { Locale } from '@/utils/types';
+import { alphabet } from '@/settings';
 import assert from 'assert';
 
 const cases = [
@@ -27,9 +27,9 @@ const cases = [
   { text: 'Це текст українською', key: 16, cipher: 'Цтлґтьгґлдьвмш гїьай', locale: 'ua' },
 ];
 
-export const testEncoding = ({ text, key, cipher, locale = 'en' }: (typeof cases)[0]) => {
+const testEncoding = ({ text, key, cipher }: (typeof cases)[0]) => {
   try {
-    assert.strictEqual(caesar.encode(text, key, locale as Locale), cipher);
+    assert.strictEqual(caesar.encode(text, key, alphabet), cipher);
     return true;
   } catch (e) {
     console.error(e);
@@ -37,9 +37,9 @@ export const testEncoding = ({ text, key, cipher, locale = 'en' }: (typeof cases
   }
 };
 
-export const testDecoding = ({ text, key, cipher, locale }: (typeof cases)[0]) => {
+const testDecoding = ({ text, key, cipher }: (typeof cases)[0]) => {
   try {
-    assert.strictEqual(caesar.decode(cipher, key, locale as Locale), text);
+    assert.strictEqual(caesar.decode(cipher, key, alphabet), text);
     return true;
   } catch (e) {
     console.error(e);
@@ -47,7 +47,7 @@ export const testDecoding = ({ text, key, cipher, locale }: (typeof cases)[0]) =
   }
 };
 
-export const test = () => {
+export default () => {
   const encodingResults = cases.map((item) => testEncoding(item));
   const decodingResults = cases.map((item) => testDecoding(item));
 

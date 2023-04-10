@@ -1,23 +1,11 @@
 import caesar from '@/ciphers/caesar';
-import { LocalesEnum } from '@/utils';
+import { AttackResultsType } from '@/types';
 
-export type AttackResultsType = Record<LocalesEnum, { key: number; value: string }[]>;
+export default (cipher: string, alphabet: string) => {
+  const results: AttackResultsType = [];
 
-export const attack = (cipher = '') => {
-  const alphabets: Record<LocalesEnum, string> = {
-    [LocalesEnum.EN]: ' abcdefghijklmnopqrstuvwxyz',
-    [LocalesEnum.UA]: ' абвгґдеєжзиіїйклмнопрстуфхцчшщьюя',
-  };
-
-  const results: AttackResultsType = {
-    [LocalesEnum.EN]: [],
-    [LocalesEnum.UA]: [],
-  };
-
-  Object.entries(alphabets).forEach(([locale, alphabet]) => {
-    Array.from(alphabet).forEach((_, i) => {
-      results[locale as LocalesEnum].push({ key: i, value: caesar.decode(cipher, i, locale as LocalesEnum) });
-    });
+  Array.from(alphabet).forEach((_, i) => {
+    results.push({ key: i, value: caesar.decode(cipher, i, alphabet) });
   });
 
   return results;
