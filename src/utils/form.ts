@@ -1,4 +1,4 @@
-import { FormRule } from 'antd';
+import { FormInstance, FormRule } from 'antd';
 import { Schema } from 'yup';
 
 export const yupSync = (path: string, validationSchema: Schema, required = true): FormRule[] => [
@@ -10,3 +10,5 @@ export const yupSync = (path: string, validationSchema: Schema, required = true)
     required,
   },
 ];
+
+export const hasError = (form: FormInstance) => form.getFieldsError().some(({ errors }) => errors.length);

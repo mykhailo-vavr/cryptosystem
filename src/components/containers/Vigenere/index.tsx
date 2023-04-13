@@ -16,10 +16,10 @@ const Vigenere: FC = () => {
   });
   const asyncWrapper = useAsyncWrapper();
 
-  const { string, getRequiredFieldSchema } = useFormFieldsSchema();
+  const { string, required } = useFormFieldsSchema();
 
   const schema = useYupSchema({
-    motto: getRequiredFieldSchema(
+    motto: required(
       string.test({
         test: (motto) => {
           if (!motto) {
@@ -52,7 +52,7 @@ const Vigenere: FC = () => {
       }
     }
 
-    const cipherFunction = (text: string, alphabet: string) => vigenere[action](text, String(motto), alphabet);
+    const cipherFunction = (text: string, alphabet: string) => vigenere[action](text, motto, alphabet);
 
     setCipherFunction((prevState) => ({
       ...prevState,

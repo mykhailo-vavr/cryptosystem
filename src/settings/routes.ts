@@ -6,5 +6,6 @@ export const webRoutes = {
     CAESAR: '/caesar',
     TRITHEMIUS: '/trithemius',
     VIGENERE: '/vigenere',
+    KNAPSACK: '/knapsack',
   },
 };
