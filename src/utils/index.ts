@@ -1,3 +1,4 @@
+export * from './array';
 export * from './file';
 export * from './form';
 export * from './math';

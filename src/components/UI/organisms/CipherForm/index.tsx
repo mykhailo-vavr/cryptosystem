@@ -13,30 +13,41 @@ import TestResults from '../TestResults';
 import Form from '../Form';
 import AttackResults from '../AttackResults';
 
-const CipherForm: FC<CipherFormProps> = ({ children, title, form, onChange, encode, decode, test, attack }) => {
+const CipherForm: FC<CipherFormProps> = ({
+  children,
+  title,
+  form,
+  onChange,
+  encode,
+  decode,
+  test,
+  attack,
+  fieldsToShow,
+}) => {
   const { modal } = useApp();
   const [toggleLoadingWrapper, loading] = useToggleWrapper();
 
-  const { string, getRequiredFieldSchema } = useFormFieldsSchema();
+  const { string, required } = useFormFieldsSchema();
 
   const schema = useYupSchema({
-    alphabet: getRequiredFieldSchema(string.matches(/^(?:([A-Za-z])(?!.*\1))*$/, 'Characters should be unique')),
+    alphabet: required(string.matches(/^(?:([A-Za-z])(?!.*\1))*$/, 'Characters should be unique')),
   });
 
   const onFieldsChange = useCallback(
     (changedFields: FieldData[]) => {
       const asyncWrapper = async () => {
-        if (changedFields[0].name === 'alphabet') {
+        if (changedFields[0].name.toString() === 'alphabet') {
           try {
             await form.validateFields();
           } catch {
             return;
           }
         }
+
         onChange(changedFields);
       };
 
-      asyncWrapper().catch(console.error);
+      asyncWrapper().catch(() => {});
     },
     [form, onChange],
   );
@@ -103,6 +114,10 @@ const CipherForm: FC<CipherFormProps> = ({ children, title, form, onChange, enco
   });
 
   const showTestResults = toggleLoadingWrapper(() => {
+    if (!test) {
+      return;
+    }
+
     const { encodingResults, decodingResults } = test();
     const results = [...encodingResults, ...decodingResults];
 
@@ -139,24 +154,34 @@ const CipherForm: FC<CipherFormProps> = ({ children, title, form, onChange, enco
         initialValues={initialValues}
         disabled={loading}
       >
-        <FormItem name="action" label="Type">
-          <RadioGroup options={actionOptions} />
-        </FormItem>
-        <FormItem name="text" label="Text">
-          <TextArea rows={4} />
-        </FormItem>
-        <FormItem name="cipher" label="Encrypted text">
-          <TextArea rows={4} />
-        </FormItem>
-        <FormItem name="alphabet" label="Alphabet" schema={schema}>
-          <Input />
-        </FormItem>
+        {fieldsToShow?.action !== false && (
+          <FormItem name="action" label="Type">
+            <RadioGroup options={actionOptions} />
+          </FormItem>
+        )}
+        {fieldsToShow?.text !== false && (
+          <FormItem name="text" label="Text">
+            <TextArea rows={4} />
+          </FormItem>
+        )}
+        {fieldsToShow?.cipher !== false && (
+          <FormItem name="cipher" label="Encrypted text">
+            <TextArea rows={4} />
+          </FormItem>
+        )}
+        {fieldsToShow?.alphabet !== false && (
+          <FormItem name="alphabet" label="Alphabet" schema={schema}>
+            <Input />
+          </FormItem>
+        )}
 
         {children}
 
-        <FormItem name="saveAs" label="Save as">
-          <RadioGroup options={saveAsOptions} />
-        </FormItem>
+        {fieldsToShow?.saveAs && (
+          <FormItem name="saveAs" label="Save as">
+            <RadioGroup options={saveAsOptions} />
+          </FormItem>
+        )}
       </Form>
       <div className="row">
         <Button onClick={saveFile}>Save file</Button>
@@ -166,9 +191,11 @@ const CipherForm: FC<CipherFormProps> = ({ children, title, form, onChange, enco
         <Button onClick={showFrequencyTable} disabled={loading}>
           Show frequency table
         </Button>
-        <Button onClick={showTestResults} disabled={loading}>
-          Test
-        </Button>
+        {test && (
+          <Button onClick={showTestResults} disabled={loading}>
+            Test
+          </Button>
+        )}
         {attack && (
           <Button onClick={showAttackResults} disabled={loading}>
             Attack

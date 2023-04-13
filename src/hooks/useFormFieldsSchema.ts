@@ -13,7 +13,7 @@ import {
 } from 'yup';
 
 export default () => {
-  const getRequiredFieldSchema = useCallback(
+  const required = useCallback(
     (fieldSchema: NumberSchema | StringSchema | DateSchema | BooleanSchema) =>
       fieldSchema.required('This field is required'),
     [],
@@ -34,7 +34,7 @@ export default () => {
   const { onlyLetters, email } = useMemo(
     () => ({
       onlyLetters: string.matches(/^[a-zA-Zа-яА-ЯґҐєЄіІїЇ]+$/, 'Only letters'),
-      email: string.email('Емейл'),
+      email: string.email('Email'),
     }),
     [string],
   );
@@ -49,14 +49,14 @@ export default () => {
       bool,
       array,
       object,
-      requiredOnlyLetters: getRequiredFieldSchema(onlyLetters),
-      requiredEmail: getRequiredFieldSchema(email),
-      requiredString: getRequiredFieldSchema(string),
-      requiredDate: getRequiredFieldSchema(date),
-      requiredNumber: getRequiredFieldSchema(number),
-      requiredBool: getRequiredFieldSchema(bool),
-      getRequiredFieldSchema,
+      requiredOnlyLetters: required(onlyLetters),
+      requiredEmail: required(email),
+      requiredString: required(string),
+      requiredDate: required(date),
+      requiredNumber: required(number),
+      requiredBool: required(bool),
+      required,
     }),
-    [onlyLetters, email, string, date, number, bool, array, object, getRequiredFieldSchema],
+    [onlyLetters, email, string, date, number, bool, array, object, required],
   );
 };
