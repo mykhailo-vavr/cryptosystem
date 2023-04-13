@@ -1,5 +1,5 @@
-import MainLayout from '@/components/layouts/MainLayout';
-import { NextPageWithLayout } from './_app';
+import { NextPageWithLayout } from '@/components/containers';
+import { MainLayout } from '@/components/layouts';
 
 const Error404Page: NextPageWithLayout = () => <div>404 page</div>;
 

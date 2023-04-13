@@ -1,4 +1,4 @@
-import { SaveAsEnum } from '@/utils/types';
+import { SaveAsEnum } from '@/types';
 
 export const readFile = (file: Blob, asText = true): Promise<string | ArrayBuffer | null> => {
   const reader = new FileReader();

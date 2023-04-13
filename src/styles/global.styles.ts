@@ -4,7 +4,7 @@ import { antdStyles } from './ant.styles';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export const GlobalStyle = createGlobalStyle`
+export default createGlobalStyle`
   html {
     font-size: 16px;
   }

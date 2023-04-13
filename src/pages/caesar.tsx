@@ -1,9 +1,8 @@
-import MainLayout from '@/components/layouts/MainLayout';
-import { NextPageWithLayout } from '@/pages/_app';
-import Caesar from '@/components/containers/Caesar';
+import { Caesar, NextPageWithLayout } from '@/components/containers';
+import { MainLayout } from '@/components/layouts';
 
-const Page: NextPageWithLayout = () => <Caesar />;
+const CaesarPage: NextPageWithLayout = () => <Caesar />;
 
-Page.getLayout = (page) => <MainLayout>{page}</MainLayout>;
+CaesarPage.getLayout = (page) => <MainLayout>{page}</MainLayout>;
 
-export default Page;
+export default CaesarPage;

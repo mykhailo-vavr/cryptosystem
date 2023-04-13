@@ -1,10 +1,5 @@
-import { LocalesEnum, ActionsEnum, SaveAsEnum } from '@/utils';
+import { CipherForm } from '@/types';
 
-export type CipherForm = {
-  text: string;
-  cipher: string;
-  key: string | number;
-  locale: LocalesEnum;
-  action: ActionsEnum;
-  saveAs: SaveAsEnum;
-};
+export type CaesarForm = {
+  key: number;
+} & CipherForm;

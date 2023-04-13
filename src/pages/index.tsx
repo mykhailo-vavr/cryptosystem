@@ -1,9 +1,9 @@
-import MainLayout from '@/components/layouts/MainLayout';
+import { MainLayout } from '@/components/layouts';
 import Link from 'next/link';
-import routes from '@/settings/routes';
-import { NextPageWithLayout } from './_app';
+import { webRoutes } from '@/settings';
+import { NextPageWithLayout } from '@/components/containers';
 
-const Page: NextPageWithLayout = () => (
+const LandingPage: NextPageWithLayout = () => (
   <div
     style={{
       display: 'flex',
@@ -12,11 +12,11 @@ const Page: NextPageWithLayout = () => (
     }}
   >
     <h2>Welcome to Ciphers</h2>
-    <Link href={routes.public.CAESAR}>Caesar cipher</Link>
-    <Link href={routes.public.INFO}>Info</Link>
+    <Link href={webRoutes.public.CAESAR}>Caesar cipher</Link>
+    <Link href={webRoutes.public.INFO}>Info</Link>
   </div>
 );
 
-Page.getLayout = (page) => <MainLayout>{page}</MainLayout>;
+LandingPage.getLayout = (page) => <MainLayout>{page}</MainLayout>;
 
-export default Page;
+export default LandingPage;
