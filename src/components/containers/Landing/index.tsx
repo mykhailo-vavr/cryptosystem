@@ -10,6 +10,7 @@ const Landing: FC = () => (
     <Link href={webRoutes.public.TRITHEMIUS}>Trithemius cipher</Link>
     <Link href={webRoutes.public.VIGENERE}>Vigenere cipher</Link>
     <Link href={webRoutes.public.KNAPSACK}>Merkle-Hellman knapsack cryptosystem</Link>
+    <Link href={webRoutes.public.RSA}>RSA</Link>
     <Link href={webRoutes.public.INFO}>Info</Link>
   </LandingWrapper>
 );

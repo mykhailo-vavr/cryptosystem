@@ -7,5 +7,6 @@ export const webRoutes = {
     TRITHEMIUS: '/trithemius',
     VIGENERE: '/vigenere',
     KNAPSACK: '/knapsack',
+    RSA: '/rsa',
   },
 };
