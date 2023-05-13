@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import { Form as AntForm } from 'antd';
 import { FormProps } from './types';
+import { FormWrapper } from './styles';
 
-const Form: FC<FormProps> = (props) => <AntForm {...props} />;
+const Form: FC<FormProps> = (props) => <FormWrapper {...props} />;
 
 export default Form;
