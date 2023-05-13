@@ -8,5 +8,6 @@ export const webRoutes = {
     VIGENERE: '/vigenere',
     KNAPSACK: '/knapsack',
     RSA: '/rsa',
+    DIFFIE_HELLMAN: '/diffie-hellman',
   },
 };

@@ -1,5 +1,4 @@
-#!/usr/bin/env sh
-
+#!/bin/bash
 # ./dir ComponentName 
 
 cd "src/components"

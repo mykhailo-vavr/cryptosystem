@@ -1,7 +1,7 @@
-import { RSA, NextPageWithLayout } from '@/components/containers';
+import { DiffieHellman, NextPageWithLayout } from '@/components/containers';
 import { MainLayout } from '@/components/layouts';
 
-const KnapsackPage: NextPageWithLayout = () => <RSA />;
+const KnapsackPage: NextPageWithLayout = () => <DiffieHellman />;
 
 KnapsackPage.getLayout = (page) => <MainLayout>{page}</MainLayout>;
 
