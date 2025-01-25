@@ -4,7 +4,7 @@ import { UploadChangeParam, RcFile } from 'antd/lib/upload';
 import { Button, Upload, TextArea, Input } from '@/components/UI/atoms';
 import { FormItem, RadioGroup } from '@/components/UI/molecules';
 import { useToggleWrapper, useApp, useFormFieldsSchema, useYupSchema } from '@/hooks';
-import { ActionsEnum, FieldData } from '@/types';
+import { ActionsEnum, FieldData, SaveAsEnum } from '@/types';
 import { CipherFormWrapper } from './styles';
 import { CipherFormProps } from './types';
 import { initialValues, actionOptions, saveAsOptions } from './settings';
@@ -96,7 +96,7 @@ const CipherForm: FC<CipherFormProps> = ({
   });
 
   const saveFile = toggleLoadingWrapper(() => {
-    const { text, cipher, action, saveAs } = form.getFieldsValue();
+    const { text, cipher, action, saveAs = SaveAsEnum.TEXT } = form.getFieldsValue();
     const data = action === ActionsEnum.ENCODE ? cipher : text;
     const name = `${action}d-${Date.now()}`;
 

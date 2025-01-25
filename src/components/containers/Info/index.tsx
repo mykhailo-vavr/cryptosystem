@@ -5,7 +5,7 @@ import { FC } from 'react';
 const Info: FC = () => (
   <Descriptions title="Info">
     <DescriptionsItem label="Full name">Mykhailo Vavrykovych</DescriptionsItem>
-    <DescriptionsItem label="Group">AMI-33</DescriptionsItem>
+    <DescriptionsItem label="Group">AMI-43</DescriptionsItem>
   </Descriptions>
 );
 

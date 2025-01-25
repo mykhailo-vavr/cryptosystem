@@ -8,3 +8,5 @@ export { default as Landing } from './Landing';
 export { default as Knapsack } from './Knapsack';
 export { default as RSA } from './RSA';
 export { default as DiffieHellman } from './DiffieHellman';
+export { default as Hill } from './Hill';
+export { default as TwoSquare } from './TwoSquare';

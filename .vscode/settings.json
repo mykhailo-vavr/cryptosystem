@@ -1,3 +1,15 @@
 {
-  "cSpell.words": ["coef", "Coprime", "cryptosystem", "Merkle", "vigenere"]
+  "cSpell.words": [
+    "adjugate",
+    "coef",
+    "cofactor",
+    "Coprime",
+    "cryptosystem",
+    "diffie",
+    "Merkle",
+    "subi",
+    "submatrix",
+    "trithemius",
+    "vigenere"
+  ]
 }

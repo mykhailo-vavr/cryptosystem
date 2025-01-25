@@ -9,5 +9,7 @@ export const webRoutes = {
     KNAPSACK: '/knapsack',
     RSA: '/rsa',
     DIFFIE_HELLMAN: '/diffie-hellman',
+    TWO_SQUARE: '/two-square',
+    HILL: '/hill',
   },
 };
